@@ -1,1 +1,44 @@
-<p>subscription works!</p>
+<header class="bg-dark text-light display-4 fs-4 py-3 text-center mb-5 shadow-sm">
+    Subscription Manager
+</header>
+<main class="container">
+    <h2 class="text-center mt-5 mb-3">Choose A Subscription Plan</h2>
+    <section class="d-flex justify-content-evenly flex-wrap">
+        <div *ngFor="let plan of subscriptionPlans" [ngClass]="{'bg-gray text-light shadow': chosenPlanId == plan.id, 'bg-light': chosenPlanId != plan.id }" class="shadow-sm my-2 rounded-3" style="width: 20rem;">
+            <div [ngClass]="{'bg-light text-dark border border-success': chosenPlanId == plan.id, 'bg-gray': chosenPlanId != plan.id }" class="p-2 text-light text-center rounded shadow-sm">
+                <h1 class="fs-4">{{plan.monthPeriod}} month</h1>
+                <p class="m-0">R{{plan.price}}</p>
+            </div>
+            <ul class="list-unstyled px-2 py-3">
+                <li class="mb-2">
+                    <i class="bi bi-check-lg text-success fs-4"></i>
+                    Lorem ipsum dolor sit amet.
+                </li>
+                <li class="mb-2">
+                    <i class="bi bi-check-lg text-success fs-4"></i>
+                    Lorem ipsum dolor sit amet.
+                </li>
+                <li class="mb-2">
+                    <i class="bi bi-check-lg text-success fs-4"></i>
+                    Lorem ipsum dolor sit amet.
+                </li>
+                <li class="mb-2">
+                    <i class="bi bi-check-lg text-success fs-4"></i>
+                    Lorem ipsum dolor sit amet.
+                </li>
+            </ul>
+            <div *ngIf="chosenPlanId !== plan.id" class="text-center p-2">
+                <button (click)="choosePlan(plan.id)" class="btn btn-success w-100">Choose Plan</button>
+            </div>
+            <div *ngIf="chosenPlanId == plan.id" class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label mx-2" for="flexCheckDefault">
+                  Recurring Subscription
+                </label>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+
+</footer>
